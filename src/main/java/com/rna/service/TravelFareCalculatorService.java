@@ -2,6 +2,7 @@ package com.rna.service;
 
 import com.rna.datahelper.JourneyDataProvider;
 import com.rna.dto.TravelRequest;
+import com.rna.dto.TravelResponse;
 import com.rna.exception.TravelTicketingSystemServiceException;
 
 public class TravelFareCalculatorService implements TravelFareCalculator {
@@ -19,7 +20,7 @@ public class TravelFareCalculatorService implements TravelFareCalculator {
      * @throws TravelTicketingSystemServiceException
      */
     @Override
-    public double calculateFare(TravelRequest travelRequest) throws TravelTicketingSystemServiceException {
+    public TravelResponse calculateFare(TravelRequest travelRequest) throws TravelTicketingSystemServiceException {
         try {
             //1. Get distance for given source and destination locations
             JourneyDataProvider journeyDataProvider = new JourneyDataProvider();
@@ -34,7 +35,7 @@ public class TravelFareCalculatorService implements TravelFareCalculator {
 
             fare = fare * travelRequest.getNoOfTravellers();
 
-            return fare;
+            return new TravelResponse(distance, fare);
 
         }catch (RuntimeException e) {
             throw new TravelTicketingSystemServiceException("fare calculations is failed");

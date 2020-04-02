@@ -1,6 +1,7 @@
 package com.rna.service;
 
 import com.rna.dto.TravelRequest;
+import com.rna.dto.TravelResponse;
 import com.rna.exception.TravelTicketingSystemServiceException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,8 +14,8 @@ public class TravelFareCalculatorServiceTest {
     public void testCorrectFare_whenValidTravelRequestProvided() {
         TravelFareCalculator travelFareCalculator = new TravelFareCalculatorService();
         TravelRequest travelRequest = new TravelRequest("PUNE", "NASHIK", 1);
-        double fare = travelFareCalculator.calculateFare(travelRequest);
-        Assertions.assertEquals(1250d, fare);
+        TravelResponse travelResponse = travelFareCalculator.calculateFare(travelRequest);
+        Assertions.assertEquals(1250d, travelResponse.getFare());
     }
 
     @Test
@@ -22,8 +23,8 @@ public class TravelFareCalculatorServiceTest {
     public void testCorrectFare_whenValidTravelRequestProvidedInReturnJounery() {
         TravelFareCalculator travelFareCalculator = new TravelFareCalculatorService();
         TravelRequest travelRequest = new TravelRequest("NASHIK", "PUNE", 1);
-        double fare = travelFareCalculator.calculateFare(travelRequest);
-        Assertions.assertEquals(1250d, fare);
+        TravelResponse travelResponse = travelFareCalculator.calculateFare(travelRequest);
+        Assertions.assertEquals(1250d, travelResponse.getFare());
     }
 
     @Test
@@ -31,8 +32,8 @@ public class TravelFareCalculatorServiceTest {
     public void testCorrectFare_whenValidTravelRequestProvidedWithMultipleTravellers() {
         TravelFareCalculator travelFareCalculator = new TravelFareCalculatorService();
         TravelRequest travelRequest = new TravelRequest("PUNE", "NASHIK", 2);
-        double fare = travelFareCalculator.calculateFare(travelRequest);
-        Assertions.assertEquals(2500d, fare);
+        TravelResponse travelResponse = travelFareCalculator.calculateFare(travelRequest);
+        Assertions.assertEquals(2500d, travelResponse.getFare());
     }
 
     @Test
