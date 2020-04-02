@@ -37,6 +37,5 @@ public class JourneyDataProviderTest {
         JourneyDataProvider journeyDataProvider = new JourneyDataProvider();
         Assertions.assertThrows(TravelTicketingSystemServiceException.class,
                 () -> journeyDataProvider.getDistance("PUNE", "ABCD"));
-
     }
 }
