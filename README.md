@@ -26,6 +26,7 @@ TravelRequest travelRequest = new TravelRequest("PUNE", "NASHIK", 1);
 
 Output:
 
+<pre>
 Taxi Ticket
 -----------
 Source: PUNE
@@ -34,5 +35,6 @@ Kms: 200
 No. of travellers = 1 
 Total = 1250 INR
 
+</pre>
 
 
