@@ -8,7 +8,7 @@ public interface TicketPrintingUtil {
     static boolean printTicket(TravelRequest travelRequest, TravelResponse travelResponse) {
         String newLine = System.lineSeparator();
 
-        String printOutput = "Taxi Ticket"
+        String printOutput = "Taxi Travel Ticket"
                 + newLine
                 + "-----------"
                 + newLine
@@ -20,7 +20,9 @@ public interface TicketPrintingUtil {
                 + newLine
                 + "No. of travellers = %d "
                 + newLine
-                + "Total = %.0f INR";
+                + "Total = %.0f INR"
+                + newLine
+                + "-----------";
 
         System.out.println(String.format(printOutput,
                 travelRequest.getSource(),
