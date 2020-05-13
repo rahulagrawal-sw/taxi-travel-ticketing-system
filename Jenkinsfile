@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Build with JDK 11') {
             agent {
                  docker {
                     image 'openjdk:11.0.6-slim'
@@ -17,7 +17,7 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Test') {
+        stage('Unit Test') {
             steps {
                 sh 'mvn test'
             }
@@ -27,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+        stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
